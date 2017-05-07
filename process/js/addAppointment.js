@@ -13,14 +13,26 @@ var AddAppointment = React.createClass({
       aptDate: this.refs.inputAptDate.value + ' ' + this.refs.inputAptTime.value,
       aptNotes: this.refs.inputAptNotes.value
     }
-    e.preventDefault();
+    
     this.props.addApt(tempItem);
+
+    this.refs.inputPetName.value = '';
+    this.refs.inputOwnerName.value = '';
+    this.refs.inputAptDate.value = '';
+    this.refs.inputAptTime.value = '';
+    this.refs.inputAptNotes.value = '';
+
+    e.preventDefault();
   }, //handleAdd
 
   render: function() {
 
     var displayAptBody = {
-      display: this.props.bodyVisible ? 'block': 'none'
+      maxHeight: this.props.bodyVisible ? '1000px': '0px',
+      padding: this.props.bodyVisible ? '15px': '0px',
+      boxSizing: 'border-box',
+      transition: '.5s',
+      overflow: 'hidden'
     };
 
     return(
